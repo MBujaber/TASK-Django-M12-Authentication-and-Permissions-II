@@ -51,14 +51,27 @@
       <main class="bg-light h-100">
         <form class="container py-2" action="{% url 'create-movie' %}" method="POST">
             <!-- prettier-ignore -->
+
             {% csrf_token %}
+            {% if user.is_authenticated %}
             {{ form | crispy }}
             <button class="btn btn-success" type="submit">Add Movie</button>
-        </form>
-      </main>
-  
-      <footer class="mt-auto text-center py-2">
-        Awesome movies since like forever!
+            {% else %}
+            please login: 
+              <button>
+                
+                <a class="nav-link" href="{% url 'login' %}">login</a>
+
+              </button>
+
+            {% endif %}
+            <footer class="mt-auto text-center py-2">
+            
+            
+          </form>
+          </main>
+          
+            Awesome movies since like forever!
       </footer>
     </body>
   </body>

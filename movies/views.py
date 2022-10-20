@@ -41,3 +41,7 @@ def create_movie(request):
     }
 
     return render(request, "movie_create.html", context)
+    
+def some_view(request):
+    if request.user.is_anonymous:
+        return redirect("login")
